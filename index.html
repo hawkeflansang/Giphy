@@ -9,8 +9,22 @@
     <title>Giphy</title>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="assets/giphy.js"></script>
-    
+    <div class="container">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/giphy.js"></script>
+        <!---Buttons will go here-->
+        <div id="buttons-view"></div>
+
+        <!--Create gif search-->
+        <form id="giphy-form">
+            <label for="gif-input">Find a Gif for You!!</label>
+            <input type="text" id="gif-input"><br>
+            <input type="submit" id="add-gif" value="Find a Gif for You!!">
+        </form>
+
+        <!--Gifs will appear here-->
+        <div id="gif-view"></div>
+
+    </div>
 </body>
 </html>
