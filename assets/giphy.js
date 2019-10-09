@@ -25,6 +25,7 @@ function displayGifInfo() {
 
                 var gifImage = $("<img>");
                 gifImage.attr({"src": results[i].images.fixed_height_still.url, "data-still": results[i].images.fixed_height_still.url, "data-animate": results[i].images.fixed_height.url, "data-state": "still"});
+                gifImage.addClass("gif-image");
 
                 gifDiv.append(ratingP);
                 gifDiv.append(gifImage);
@@ -64,8 +65,17 @@ $("#add-gif").on("click", function (event) {
     renderButtons();
 })
 
+$(document).on("click", ".gif", displayGifInfo);
+
+$(".gif-image").on("click", function() {
+    var state = $(this).attr("data-state");
+
+    if (state === "still") {
+        $(this).attr({"src": $(this).attr("data-animate"), "data-state": "animate"})
+    } else {
+        $(this).attr({"src": $(this).attr("data-still"), "data-state": "still"})
+    }
+})
+
+
 renderButtons();
-
-$("button").on("click", ".gif", displayMovieInfo);
-
-
