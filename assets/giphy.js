@@ -3,7 +3,7 @@
 var buttonGifs = ["Top Gun", "Kenny Loggins", "Danger Zone", "Maverick", "Tom Cruise", "Goose"];
 
 //function to make gifs display on click
-$("button").on("click", function() {
+function displayGifInfo() {
 
         var gif = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=vCc4R27WhNt9QHuNY2RJtlJC1ve8p1pO&limit=10";
@@ -33,7 +33,7 @@ $("button").on("click", function() {
             }
         })
     
-})
+}
 
 
 //create buttons of buttonGifs
@@ -52,5 +52,20 @@ function renderButtons() {
     }
 }
 
+//create new button from input
+$("#add-gif").on("click", function (event) {
+    event.preventDefault();
+
+    var addGif = $("#gif-input").val().trim();
+
+    buttonGifs.push(addGif);
+    console.log(buttonGifs);
+
+    renderButtons();
+})
 
 renderButtons();
+
+$("button").on("click", ".gif", displayMovieInfo);
+
+
