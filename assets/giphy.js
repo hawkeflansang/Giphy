@@ -1,10 +1,9 @@
 //store gifs for first viewing
 
-var startingGifs = ["Top Gun", "Kenny Loggins", "Danger Zone", "Maverick", "Tom Cruise", "Goose"];
+var buttonGifs = ["Top Gun", "Kenny Loggins", "Danger Zone", "Maverick", "Tom Cruise", "Goose"];
 
 //function to make gifs display on click
 $("button").on("click", function() {
-    function displayGifs() {
 
         var gif = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=vCc4R27WhNt9QHuNY2RJtlJC1ve8p1pO&limit=10";
@@ -33,5 +32,25 @@ $("button").on("click", function() {
                 $("#gif-view").prepend(gifDiv);
             }
         })
-    }
+    
 })
+
+
+//create buttons of buttonGifs
+function renderButtons() {
+
+    $("#buttons-view").empty();
+
+    for(var i = 0; i < buttonGifs.length; i++) {
+        var gifButton = $("<button>");
+
+        gifButton.addClass("gif");
+        gifButton.attr("data-name", buttonGifs[i]);
+        gifButton.text(buttonGifs[i]);
+
+        $("#buttons-view").append(gifButton);
+    }
+}
+
+
+renderButtons();
