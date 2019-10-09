@@ -17,6 +17,7 @@ function displayGifInfo() {
             console.log(response);
 
             var results = response.data;
+            //var gifImage = $("<img>");
 
             for (var i = 0; i < results.length; i++){
                 var gifDiv = $("<div>");
@@ -32,6 +33,15 @@ function displayGifInfo() {
                 
                 $("#gif-view").prepend(gifDiv);
             }
+            $(".gif-image").on("click", function() {
+                var state = $(this).attr("data-state");
+            
+                if (state === "still") {
+                    $(this).attr({"src": $(this).attr("data-animate"), "data-state": "animate"})
+                } else {
+                    $(this).attr({"src": $(this).attr("data-still"), "data-state": "still"})
+                }
+            })
         })
     
 }
@@ -67,15 +77,15 @@ $("#add-gif").on("click", function (event) {
 
 $(document).on("click", ".gif", displayGifInfo);
 
-$(".gif-image").on("click", function() {
-    var state = $(this).attr("data-state");
+// $(".gif-image").on("click", function() {
+//     var state = $(this).attr("data-state");
 
-    if (state === "still") {
-        $(this).attr({"src": $(this).attr("data-animate"), "data-state": "animate"})
-    } else {
-        $(this).attr({"src": $(this).attr("data-still"), "data-state": "still"})
-    }
-})
+//     if (state === "still") {
+//         $(this).attr({"src": $(this).attr("data-animate"), "data-state": "animate"})
+//     } else {
+//         $(this).attr({"src": $(this).attr("data-still"), "data-state": "still"})
+//     }
+// })
 
 
 renderButtons();
