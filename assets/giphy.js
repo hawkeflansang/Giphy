@@ -23,6 +23,7 @@ function displayGifInfo() {
                 var gifDiv = $("<div>");
 
                 var ratingP = $("<p>").text("Rating: " + results[i].rating);
+                var gifSeperate = $("<hr>")
 
                 var gifImage = $("<img>");
                 gifImage.attr({"src": results[i].images.fixed_height_still.url, "data-still": results[i].images.fixed_height_still.url, "data-animate": results[i].images.fixed_height.url, "data-state": "still"});
@@ -30,6 +31,7 @@ function displayGifInfo() {
 
                 gifDiv.append(ratingP);
                 gifDiv.append(gifImage);
+                gifDiv.append(gifSeperate);
                 
                 $("#gif-view").prepend(gifDiv);
             }
